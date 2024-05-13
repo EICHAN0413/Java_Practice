@@ -37,33 +37,32 @@ import java.util.Scanner;
 //・1 ≦ N ≦ 1,000
 //・1 ≦ X, Y ≦ N
 
-public class gift_project {
-	
-	    public static void main(String[] args) {
+public class GiftProject {
 
-	        Scanner sc = new Scanner(System.in);
-	        String line = sc.nextLine();
-	        String N[] = line.split(" ");
-	        int member[] = new int[3];
-	        member[0] = Integer.parseInt(N[0]);
-	        member[1] = Integer.parseInt(N[1]);
-	        member[2] = Integer.parseInt(N[2]);
-	        
-	        for(int i = 0, j = 1; i < member[0]; i++, j++) {
-	            
-	            if(j % member[1] == 0 && j % member[2] ==0) {
-	                System.out.println("AB");
-	                continue;
-	            } else if(j % member[1] == 0) {
-	                System.out.println("A");
-	                continue;
-	            } else if(j % member[2] == 0) {
-	                System.out.println("B");
-	            } else {
-	                System.out.println("N");
-	            }
-	            
-	        }
-	    }
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		String line = sc.nextLine();
+		String N[] = line.split(" ");
+		int member[] = new int[3];
+		member[0] = Integer.parseInt(N[0]);
+		member[1] = Integer.parseInt(N[1]);
+		member[2] = Integer.parseInt(N[2]);
+
+		for (int i = 0, j = 1; i < member[0]; i++, j++) {
+
+			if (j % member[1] == 0 && j % member[2] == 0) {
+				System.out.println("AB");
+				continue;
+			} else if (j % member[1] == 0) {
+				System.out.println("A");
+				continue;
+			} else if (j % member[2] == 0) {
+				System.out.println("B");
+			} else {
+				System.out.println("N");
+			}
+
+		}
+	}
 }
-

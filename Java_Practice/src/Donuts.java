@@ -44,54 +44,48 @@
 
 import java.util.Scanner;
 
-public class donuts {
-	
-	    public static void main(String[] args) {
+public class Donuts {
 
-	        Scanner sc = new Scanner(System.in);
-	        int tate = sc.nextInt();
-	        int yoko = sc.nextInt();
-	        int count = 0;
-	        String[][] donuts = new String[tate][yoko];
-	        
-	        for(int i =0; i < tate; i++) {
-	            
-	            String i_1 = sc.next();
-	            String[] i_2 = i_1.split("");
-	            int n = 0;
-	            
-	            for(String s : i_2) {
-	                donuts[i][n] = i_2[n];
-	                n++;
-	            }
-	        }
-	        
-	        for(int i =0;  i < tate; i++) {
-	        	
-	            for(int n = 0; n < yoko; n++) {
-	            	
-	                if(i != 0  && 
-	                   i != tate -1 && 
-	                   n != 0 && 
-	                   n != yoko -1 && 
-	                   donuts[i][n].equals(".") ) {
-	                       
-	                    if(donuts[i][n-1].equals("#") &&
-	                       donuts[i][n+1].equals("#")&& 
-	                       donuts[i-1][n].equals("#") && 
-	                       donuts[i+1][n].equals("#") &&
-	                       donuts[i-1][n-1].equals("#") &&
-	                       donuts[i-1][n+1].equals("#") &&
-	                       donuts[i+1][n-1].equals("#") &&
-	                       donuts[i+1][n+1].equals("#") ) {
-	                        
-	                        count++;
-	                    }
-	                }
-	            }
-	        }
-	        
-	        System.out.println(count);
-	            
-	    }
+	public static void main(String[] args) {
+
+		Scanner scanner = new Scanner(System.in);
+		int height = scanner.nextInt();
+		int width = scanner.nextInt();
+		int count = 0;
+		String[][] donuts = new String[height][width];
+
+		// 入力を2次元配列に格納
+		for (int i = 0; i < height; i++) {
+
+			String input = scanner.next();
+			String[] row = input.split("");
+
+			for (int j = 0; j < width; j++) {
+				donuts[i][j] = row[j];
+			}
+		}
+
+		// ドーナツの絵をカウント
+		for (int i = 1; i < height - 1; i++) {
+
+			for (int j = 1; j < width - 1; j++) {
+
+				if (donuts[i][j].equals(".")) {
+					if (isDonuts(donuts, i, j)) {
+						count++;
+					}
+				}
+			}
+		}
+
+		System.out.println(count);
+	}
+
+	// ドーナツの絵かどうかを判定するメソッド
+	public static boolean isDonuts(String[][] donuts, int x, int y) {
+
+		return donuts[x - 1][y - 1].equals("#") && donuts[x - 1][y].equals("#") && donuts[x - 1][y + 1].equals("#")
+				&& donuts[x][y - 1].equals("#") && donuts[x][y + 1].equals("#") && donuts[x + 1][y - 1].equals("#")
+				&& donuts[x + 1][y].equals("#") && donuts[x + 1][y + 1].equals("#");
+	}
 }

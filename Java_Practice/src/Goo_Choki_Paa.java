@@ -24,7 +24,6 @@ import java.util.Scanner;
 //2 回目のじゃんけんでは、出席番号 3 の園児が出席番号 4 の園児に勝ちます。
 //3 回目のじゃんけんでは、出席番号 5 の園児が出席番号 3 の園児に勝ちます。
 
-
 //入力は以下のフォーマットで与えられます。
 //
 //N M
@@ -57,60 +56,60 @@ import java.util.Scanner;
 //・x_i ≠ y_i
 //・じゃんけんの勝敗記録に矛盾はない。つまり、i 回目のじゃんけんの時点で、出席番号が x_i の園児と出席番号が y_i の園児はそれぞれの列の先頭にいる。
 
-public class goo_choki_paa {
-	
+public class Goo_Choki_Paa {
+
 	public static void main(String[] args) {
-		
-        Scanner sc = new Scanner(System.in);
-        String line0 = sc.nextLine();
-        String N0[] = line0.split(" ");
-        int N1[] = new int[2];
-        N1[0] = Integer.parseInt(N0[0]);
-        N1[1] = Integer.parseInt(N0[1]);
-        
-        Map<String, String> member = new HashMap<>();
-        for(int m = 1; m < N1[0]+1; m++) {
-            member.put(String.valueOf(m), String.valueOf(m));
-        }
-        
-        for(int i = 0; i < N1[1]; i++) {
-            int m = 0;
-            String line1 = sc.nextLine();
-            String N2[] = line1.split(" ");
-            if(member.containsKey(N2[m])) {
-                String obj1 = member.get(N2[m++]); 
-                String obj2 = member.get(N2[m--]);
-                member.put(N2[m++], obj1 + obj2);
-                member.remove(N2[m]);
-            }
-        }
-        
-        int maxLength = 0;
-        List <String> longestValues = new ArrayList<>();
-        
-        for(Map.Entry<String, String> entry : member.entrySet()) {
-            
-            String value = entry.getValue();
-            int valueLength = value.length();
-            
-            if(valueLength > maxLength) {
-                
-                maxLength = valueLength;
-                longestValues.clear();
-                longestValues.add(entry.getKey());
-                
-            } else if (valueLength == maxLength) {
-                
-                longestValues.add(entry.getKey());
-                
-            }
-        }
-        
-        for(int i = 0; i < longestValues.size(); i++) {
-            String value = longestValues.get(i);
-            System.out.println(value);
-        }
-        
-     }
+
+		Scanner sc = new Scanner(System.in);
+		String line0 = sc.nextLine();
+		String N0[] = line0.split(" ");
+		int N1[] = new int[2];
+		N1[0] = Integer.parseInt(N0[0]);
+		N1[1] = Integer.parseInt(N0[1]);
+
+		Map<String, String> member = new HashMap<>();
+		for (int m = 1; m < N1[0] + 1; m++) {
+			member.put(String.valueOf(m), String.valueOf(m));
+		}
+
+		for (int i = 0; i < N1[1]; i++) {
+			int m = 0;
+			String line1 = sc.nextLine();
+			String N2[] = line1.split(" ");
+			if (member.containsKey(N2[m])) {
+				String obj1 = member.get(N2[m++]);
+				String obj2 = member.get(N2[m--]);
+				member.put(N2[m++], obj1 + obj2);
+				member.remove(N2[m]);
+			}
+		}
+
+		int maxLength = 0;
+		List<String> longestValues = new ArrayList<>();
+
+		for (Map.Entry<String, String> entry : member.entrySet()) {
+
+			String value = entry.getValue();
+			int valueLength = value.length();
+
+			if (valueLength > maxLength) {
+
+				maxLength = valueLength;
+				longestValues.clear();
+				longestValues.add(entry.getKey());
+
+			} else if (valueLength == maxLength) {
+
+				longestValues.add(entry.getKey());
+
+			}
+		}
+
+		for (int i = 0; i < longestValues.size(); i++) {
+			String value = longestValues.get(i);
+			System.out.println(value);
+		}
+
+	}
 
 }
